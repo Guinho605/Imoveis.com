@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F2F4"
+    tools:context=".activity.Editar">
+
+    <ImageView
+        android:id="@+id/add2"
+        android:layout_width="75dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/btnaddadm1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnEditar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <RelativeLayout
+        android:id="@+id/imageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="85dp"
+        app:layout_constraintBottom_toTopOf="@+id/edtNdesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btnEsquerda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="-5dp"
+            android:onClick="onClickBotaoEsquerda"
+            android:text="◀️"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnDireita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="-5dp"
+            android:onClick="onClickBotaoDireita"
+            android:text="▶️"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/imageIndicatorTextView"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="52dp"
+            android:background="#728C8C8C"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="75dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/btneditaredt1"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add2"
+        app:layout_constraintStart_toEndOf="@+id/btnCancel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <EditText
+        android:id="@+id/edtNdesc"
+        android:layout_width="325dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="Nova descrição"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edtNval"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="75dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="83dp"
+        android:background="@drawable/btncancelaredt"
+        android:onClick="Cancelar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <EditText
+        android:id="@+id/edtNval"
+        android:layout_width="325dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="43dp"
+        android:ems="10"
+        android:hint="Novo valor"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNdesc" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "61875310960",
+    "project_id": "imoveis-com-f10da",
+    "storage_bucket": "imoveis-com-f10da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61875310960:android:fdb8ec3bc3b3c54585ffb5",
+        "android_client_info": {
+          "package_name": "com.inmoveiscom.imoveiscom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_ZANcRcV2sCfGP-j9idL_o6kdh6s0hN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

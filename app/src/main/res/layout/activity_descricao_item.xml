@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F2F4"
+    tools:context=".activity.Descricao_item">
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/imageContainerC"
+        android:layout_width="409dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnEsquerdaC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="-5dp"
+            android:onClick="onClickBotaoEsquerda"
+            android:text="◀️" />
+
+        <ImageView
+            android:id="@+id/imageViewContainerC"
+            android:layout_width="370dp"
+            android:layout_height="372dp"
+            android:layout_centerInParent="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"
+            android:scaleType="fitCenter"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnDireitaC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="-5dp"
+            android:onClick="onClickBotaoDireita"
+            android:text="▶️" />
+
+        <TextView
+            android:id="@+id/imageIndicatorTextView2"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:layout_alignTop="@+id/imageViewContainerC"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="46dp"
+            android:background="#728C8C8C"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtDescricaoC"
+        android:layout_width="383dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/roboto_bold"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageContainerC" />
+
+    <TextView
+        android:id="@+id/txtValorC"
+        android:layout_width="250dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="175dp"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#000000"
+        android:textDirection="locale"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescricaoC" />
+
+    <Button
+        android:id="@+id/buttonWhatsApp"
+        android:layout_width="204dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btnwpp"
+        android:onClick="enviarWhatsApp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtValorC"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

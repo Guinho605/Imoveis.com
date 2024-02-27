@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">imoveis.com</string>
+    <string name="Título1">imoveis.com</string>
+    <string name="Login">Login</string>
+    <string name="Senha">Senha</string>
+    <string name="Cadastro">Não tem uma conta?</string>
+    <string name="Cadastrar">Cadastrar-se</string>
+    <string name="Cadastrarb">Cadastrar</string>
+    <string name="CadastrarG">Cadastrar-se com o Google</string>
+    <string name="Logar">Logar</string>
+    <string name="default_web_client_id">1234567890-abcdefg.apps.googleusercontent.com</string>
+    <string name="Esquecer">Esqueceu sua senha?</string>
+    <string name="Recuperar">Redefinir</string>
+    <string name="Adicionar">Adicionar item</string>
+    <string name="Add">Adicionar</string>
+    <string name="Adi">Adicionar</string>
+    <string name="Edtar">Editar produto</string>
+    <string name="Cancelar">Cancelar Edição</string>
+    <string name="Voltar">Voltar</string>
+    <string name="Encerrar">Encerrar Sessão</string>
+    <string name="title_activity_add">Add</string>
+    <string name="Deslogar">Encerrar sessão</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="tituloitem">Imóvel a venda</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+</resources>
