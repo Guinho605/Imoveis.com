@@ -136,63 +136,37 @@ public class Editar extends BaseActivity {
                 if (nodeKey != null) {
                     progressDialog.show();
 
-                    // Se a imagem é uma URI de conteúdo, converte-a para um arquivo local e, em seguida, faz o upload
+                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("imoveis").child(nodeKey);
+
+                    // Atualize a imagem, se uma nova imagem foi selecionada
                     if (imagemSelecionada != null && imagemSelecionada.getScheme().equals("content")) {
                         try {
                             File file = File.createTempFile("temp_image", null, getCacheDir());
                             copyUriToFile(imagemSelecionada, file);
                             Uri localFileUri = Uri.fromFile(file);
 
-                            // Obtenha uma referência para o Firebase Storage
                             StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-
-                            // Defina o nome do arquivo para upload
                             String nomeArquivo = "imagem_" + System.currentTimeMillis() + ".jpg";
-
-                            // Defina a referência para o local de armazenamento da imagem no Firebase Storage
                             StorageReference imagemRef = storageRef.child(nomeArquivo);
 
-                            // Faça o upload da imagem para o Firebase Storage
                             UploadTask uploadTask = imagemRef.putFile(localFileUri);
-
-                            // Defina um listener para tratar o sucesso do upload
                             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    // Imagem carregada com sucesso, obtenha a URL da imagem
                                     imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-                                            novaURL = uri.toString(); // Converta a URI da imagem em URL do Firebase Storage
+                                            novaURL = uri.toString();
 
-                                            // Atualize os valores no banco de dados Firebase Realtime Database
-                                            DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("imoveis").child(nodeKey);
-                                            databaseRef.child("descricao").setValue(novaDescricao);
-                                            databaseRef.child("valor").setValue(novoValor);
+                                            // Atualiza a URL da imagem no banco de dados
                                             databaseRef.child("urlPrincipal").setValue(novaURL);
 
-                                            // Salve as alterações
-                                            salvarAlteracoes();
-
-                                            // Retorne para a atividade anterior
-                                            Intent intent1 = new Intent();
-                                            intent1.putExtra("nova_descricao", novaDescricao);
-                                            intent1.putExtra("novo_valor", novoValor);
-                                            intent1.putExtra("nova_url", novaURL);
-                                            setResult(RESULT_OK, intent1);
-                                            finish();
-
-                                            // Exiba uma mensagem de sucesso
-                                            Toast.makeText(Editar.this, "item atualizado com sucesso", Toast.LENGTH_SHORT).show();
-
-                                            // Feche o diálogo de progresso
-                                            progressDialog.dismiss();
+                                            // Exibe uma mensagem de sucesso
+                                            Toast.makeText(Editar.this, "Imagem atualizada com sucesso", Toast.LENGTH_SHORT).show();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            // Se falhar ao obter a URL da imagem, exiba uma mensagem de erro
-                                            progressDialog.dismiss();
                                             Toast.makeText(Editar.this, "Erro ao obter a URL da imagem", Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -200,39 +174,40 @@ public class Editar extends BaseActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    // Handle any errors here
-                                    progressDialog.dismiss();
                                     Toast.makeText(Editar.this, "Erro ao fazer upload da imagem", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            uploadImageToFirebase(localFileUri);
                         } catch (IOException e) {
                             e.printStackTrace();
-                            progressDialog.dismiss();
                             Toast.makeText(Editar.this, "Erro ao processar a imagem", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        // Se não houver uma imagem selecionada, atualize apenas a descrição e o valor no banco de dados
-                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("imoveis").child(nodeKey);
-                        databaseRef.child("descricao").setValue(novaDescricao);
-                        databaseRef.child("valor").setValue(novoValor);
-
-                        // Salve as alterações
-                        salvarAlteracoes();
-
-                        // Retorne para a atividade anterior
-                        Intent intent1 = new Intent();
-                        intent1.putExtra("nova_descricao", novaDescricao);
-                        intent1.putExtra("novo_valor", novoValor);
-                        setResult(RESULT_OK, intent1);
-                        finish();
-
-                        // Exiba uma mensagem de sucesso
-                        Toast.makeText(Editar.this, "item atualizado com sucesso", Toast.LENGTH_SHORT).show();
-
-                        // Feche o diálogo de progresso
-                        progressDialog.dismiss();
                     }
+
+                    // Atualiza a descrição se ela foi alterada
+                    if (!novaDescricao.isEmpty()) {
+                        databaseRef.child("descricao").setValue(novaDescricao);
+                    }
+
+                    // Atualiza o valor se ele foi alterado
+                    if (!novoValor.isEmpty()) {
+                        databaseRef.child("valor").setValue(novoValor);
+                    }
+
+                    // Salve as alterações
+                    salvarAlteracoes();
+
+                    // Retorne para a atividade anterior
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("nova_descricao", novaDescricao);
+                    intent1.putExtra("novo_valor", novoValor);
+                    if (novaURL != null) {
+                        intent1.putExtra("nova_url", novaURL);
+                    }
+                    setResult(RESULT_OK, intent1);
+                    finish();
+
+                    // Feche o diálogo de progresso
+                    progressDialog.dismiss();
                 }
             }
         });

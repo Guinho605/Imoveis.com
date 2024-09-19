@@ -125,7 +125,7 @@ public class Login extends BaseActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user != null && user.getEmail().equals("adm@gmail.com")) {
+                    if (user != null && user.getEmail().equals("igorsantana1710@gmail.com")) {
                         // Se o e-mail for do administrador, direcione para a tela de administrador
                         abrirAdm();
                     } else {
@@ -160,6 +160,7 @@ public class Login extends BaseActivity {
     private void abrirAdm() {
         Intent intent = new Intent(Login.this, Adm.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -172,7 +173,7 @@ public class Login extends BaseActivity {
     }
 
     private void verificarSeEAdmin(FirebaseUser user) {
-        if (user != null && user.getEmail().equals("adm@gmail.com")) {
+        if (user != null && user.getEmail().equals("igorsantana1710@gmail.com")) {
             abrirAdm();
         } else {
             abrirHome();
